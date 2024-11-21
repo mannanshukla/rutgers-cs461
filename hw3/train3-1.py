@@ -1,8 +1,7 @@
-import numpy as np  # Ensure correct import
+import numpy as np
 
-# Load training data
 try:
-    data = np.load('./HW3_data/P3_data/data_1/train.npz')  # Make sure this file exists
+    data = np.load('./HW3_data/P3_data/data_1/train.npz') 
     x, y = data['x'], data['y']
 except FileNotFoundError:
     print("File './data_1/train.npz' not found. Ensure the file path is correct.")
@@ -11,7 +10,6 @@ except AttributeError as e:
     print(f"AttributeError: {e}")
     exit()
 
-# Example: Compute mean and variance for demo purposes
 x_pos = x[y == 1]
 x_neg = x[y == -1]
 

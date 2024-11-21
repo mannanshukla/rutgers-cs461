@@ -40,31 +40,23 @@ def main():
     test_file = './HW3_data/P4_files/test4_2.npz'
     weights_file = './HW3_data/P4_files/q4weights.npy'
 
-    # Load training data
     train = np.load(train_file)
     X_train = train['x']
     y_train = train['y']
 
-    # Load testing data
     test = np.load(test_file)
     X_test = test['x']
     y_test = test['y']
 
-    # Train logistic regression
     print("Training logistic regression...")
     w = train_logistic_regression(X_train, y_train)
 
     # Evaluate accuracy on training data
     train_predictions = np.round(sigmoid(np.dot(X_train, w)))
-    train_accuracy = np.mean(train_predictions == y_train)
-    print(f"Training Accuracy: {train_accuracy:.4f}")
 
     # Evaluate accuracy on testing data
     test_predictions = np.round(sigmoid(np.dot(X_test, w)))
-    test_accuracy = np.mean(test_predictions == y_test)
-    print(f"Testing Accuracy: {test_accuracy:.4f}")
 
-    # Save weights
     np.save(weights_file, w)
     print(f"Weights saved to {weights_file}")
 
